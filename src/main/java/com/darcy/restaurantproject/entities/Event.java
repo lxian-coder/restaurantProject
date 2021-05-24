@@ -15,12 +15,12 @@ import javax.persistence.*;
 public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="ID",nullable = false,unique = true)
+    @Column(name="id",nullable = false,unique = true)
     private Long id;
-    @Lob
+
     @Column(name = "picture")
     private Byte[] image;
-    @Lob
+
     @Column(name = "description")
     private String description;
 

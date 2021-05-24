@@ -1,7 +1,7 @@
 version: '3.3'
 
 services:
-  postgressql:
+  postgresql:
     image: postgres:13.0-alpine
     volumes:
       - yyy:/var/lib/postgresql/data/
