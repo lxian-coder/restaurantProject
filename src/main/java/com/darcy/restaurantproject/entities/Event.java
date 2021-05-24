@@ -18,7 +18,7 @@ public class Event {
     @Column(name="ID",nullable = false,unique = true)
     private Long id;
     @Lob
-    @Column(name = "picture",nullable = false)
+    @Column(name = "picture")
     private Byte[] image;
     @Lob
     @Column(name = "description")

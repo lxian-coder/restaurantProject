@@ -13,13 +13,13 @@ import org.springframework.web.bind.annotation.*;
  * Darcy Xian  23/5/21  1:04 pm      restaurantProject
  */
 @RestController
-@RequestMapping("/menu")
+@RequestMapping("/event")
 @RequiredArgsConstructor
 public class EventController {
     private final EventService eventService;
 
     @PatchMapping("/{eventId}")
     public ResponseEntity<EventGetDTO> updateMenuItem(@PathVariable Long eventId, @RequestBody EventPostDTO eventPostDTO) {
-        return ResponseEntity.ok(eventService.saveEvent(eventId, eventPostDTO));
+        return ResponseEntity.ok(eventService.updateEvent(eventId, eventPostDTO));
     }
 }

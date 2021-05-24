@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
  * Darcy Xian  23/5/21  10:19 pm      restaurantProject
  */
 @Repository
-public interface EventRepsitory extends JpaRepository<Event,Long> {
+public interface EventRepository extends JpaRepository<Event,Long> {
 }
