@@ -25,9 +25,8 @@ import java.io.InputStream;
 @Slf4j
 public class ImageController {
    private final EventService eventService;
-   private final EventRepository eventRepository;
    private final ImageService imageService;
-    @GetMapping("/id")
+    @GetMapping("/{id}")
     public void renderImageFromDB(@PathVariable String id, HttpServletResponse response) throws IOException{
         // HttpServletResponse 是web服务器向客户端发送数据
         EventGetDTO eventGetDTO = eventService.findByID(Long.valueOf(id));
@@ -43,7 +42,7 @@ public class ImageController {
         log.debug(" I am in image controller render");
         IOUtils.copy(is,response.getOutputStream());
     }
-    @PostMapping("/id/postImage")
+    @PostMapping("/{id}/post")
     public ResponseEntity<EventGetDTO> updateImage(@PathVariable Long id,
                                                   @RequestParam("imageFile") MultipartFile file){
 

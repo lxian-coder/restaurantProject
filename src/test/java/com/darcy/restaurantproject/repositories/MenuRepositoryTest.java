@@ -67,12 +67,12 @@ public class MenuRepositoryTest {
         menu.setSpecial(true);
         menuRepository.save(menu);
         Menu menu2 = new Menu();
-        menu.setPriceB("12");
-        menu.setCategory("lunch");
-        menu.setPriceA("22");
-        menu.setDescription("good tastes");
-        menu.setSpecial(true);
-        menuRepository.save(menu);
+        menu2.setPriceB("122");
+        menu2.setCategory("lunch");
+        menu2.setPriceA("22");
+        menu2.setDescription("good tastes");
+        menu2.setSpecial(true);
+        menuRepository.save(menu2);
 
         List<Menu> menuList = menuRepository.findAll();
         assertEquals(2,menuList.size());
