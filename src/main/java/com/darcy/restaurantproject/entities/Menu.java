@@ -11,19 +11,18 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter
-@Table(name = "menus")
+@Table(name = "menu")
 public class Menu {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, unique = true)
     private Long id;
 
     @Column(name = "description", nullable = false)
     private String description;
     @Column(name = "price", nullable = false)
-    private String priceA;
-    @Column(name = "priceB")
-    private String priceB;
+    private String price;
+    @Column(name = "price2")
+    private String price2;
     @Column(name = "category", nullable = false)
     private String category;
     @Column(name = "special", nullable = false)

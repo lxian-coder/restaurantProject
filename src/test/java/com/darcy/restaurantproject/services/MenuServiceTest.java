@@ -43,22 +43,22 @@ public class MenuServiceTest {
      menuGTO.setId(1L);
      menuGTO.setSpecial(true);
      menuGTO.setDescription("good");
-     menuGTO.setPriceA("12");
-     menuGTO.setPriceB("22");
+     menuGTO.setPrice("12");
+     menuGTO.setPrice2("22");
      menuGTO.setCategory("lunch");
      MenuGetDTO menuGetDTO1 = new MenuGetDTO();
      menuGetDTO1.setCategory("dinner");
      menuGetDTO1.setSpecial(true);
-     menuGetDTO1.setPriceB("11");
-     menuGetDTO1.setPriceA("19");
+     menuGetDTO1.setPrice2("11");
+     menuGetDTO1.setPrice("19");
      menuGetDTO1.setId(2L);
      menuGetDTO1.setDescription("ok");
      mockMenuGTOList.add(menuGTO);
       mockMenuGTOList.add(menuGetDTO1);
 
       menuPostDTO.setCategory("post");
-      menuPostDTO.setPriceA("22");
-      menuPostDTO.setPriceB("23");
+      menuPostDTO.setPrice("22");
+      menuPostDTO.setPrice2("23");
       menuPostDTO.setDescription("excellent");
     }
     @Test
@@ -93,16 +93,16 @@ public class MenuServiceTest {
         MenuGetDTO getDTOTest = new MenuGetDTO();
         getDTOTest.setCategory("dinner");
         getDTOTest.setSpecial(true);
-        getDTOTest.setPriceB("11");
-        getDTOTest.setPriceA("19");
+        getDTOTest.setPrice2("11");
+        getDTOTest.setPrice("19");
         getDTOTest.setId(2L);
         getDTOTest.setDescription("ok");
 
         Menu menu = new Menu();
         menu.setId(1L);
         menu.setCategory("a");
-        menu.setPriceA("11");
-        menu.setPriceB("12");
+        menu.setPrice("11");
+        menu.setPrice2("12");
         menu.setSpecial(true);
 
      when(menuRepository.findById(anyLong())).thenReturn(java.util.Optional.of(menu));

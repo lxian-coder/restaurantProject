@@ -44,11 +44,11 @@ public class MenuService {
             if (menuPostDTO.getDescription() != null) {
                 menu.setDescription(menuPostDTO.getDescription());
             }
-            if (menuPostDTO.getPriceA() != null) {
-                menu.setPriceA(menuPostDTO.getPriceA());
+            if (menuPostDTO.getPrice() != null) {
+                menu.setPrice(menuPostDTO.getPrice());
             }
-            if (menuPostDTO.getPriceB() != null) {
-                menu.setPriceB(menuPostDTO.getPriceB());
+            if (menuPostDTO.getPrice2() != null) {
+                menu.setPrice2(menuPostDTO.getPrice2());
             }
             menuRepository.save(menu);
             return menuMapper.fromEntity(menu);

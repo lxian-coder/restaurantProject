@@ -30,15 +30,15 @@ public class MenuRepositoryTest {
     @Test
     public void shouldAddMenuIntoDBSuccessfullyGivenProperMenuObject(){
         Menu menu = new Menu();
-        menu.setPriceB("12");
+        menu.setPrice2("12");
         menu.setCategory("lunch");
-        menu.setPriceA("22");
+        menu.setPrice("22");
         menu.setDescription("good tastes");
         menu.setSpecial(true);
         Menu returnedMenu = menuRepository.save(menu);
 
-        assertEquals("22",menu.getPriceA());
-        assertEquals("12",menu.getPriceB());
+        assertEquals("22",menu.getPrice());
+        assertEquals("12",menu.getPrice2());
         assertEquals("lunch",menu.getCategory());
         assertEquals("good tastes",menu.getDescription());
         assertTrue(menu.isSpecial());
@@ -47,9 +47,9 @@ public class MenuRepositoryTest {
     @Test
     public void shouldDeleteMenuFromDBSuccessfullyGivenMenuObjectId(){
         Menu menu = new Menu();
-        menu.setPriceB("12");
+        menu.setPrice2("12");
         menu.setCategory("lunch");
-        menu.setPriceA("22");
+        menu.setPrice("22");
         menu.setDescription("good tastes");
         menu.setSpecial(true);
         Menu returnedMenu = menuRepository.save(menu);
@@ -60,16 +60,16 @@ public class MenuRepositoryTest {
     @Test
     public void shouldReturnAllMenuItemsFromDBSuccessfully(){
         Menu menu = new Menu();
-        menu.setPriceB("12");
+        menu.setPrice2("12");
         menu.setCategory("lunch");
-        menu.setPriceA("22");
+        menu.setPrice("22");
         menu.setDescription("good tastes");
         menu.setSpecial(true);
         menuRepository.save(menu);
         Menu menu2 = new Menu();
-        menu2.setPriceB("122");
+        menu2.setPrice2("122");
         menu2.setCategory("lunch");
-        menu2.setPriceA("22");
+        menu2.setPrice("22");
         menu2.setDescription("good tastes");
         menu2.setSpecial(true);
         menuRepository.save(menu2);

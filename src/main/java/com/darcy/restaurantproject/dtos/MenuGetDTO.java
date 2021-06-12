@@ -16,9 +16,9 @@ public class MenuGetDTO {
 
     private String description;
 
-    private String priceA;
+    private String price;
 
-    private String priceB;
+    private String price2;
 
     private String category;
 
