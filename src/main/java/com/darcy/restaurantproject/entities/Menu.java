@@ -28,5 +28,4 @@ public class Menu {
     @Column(name = "special", nullable = false)
     private boolean special;
 
-
 }
