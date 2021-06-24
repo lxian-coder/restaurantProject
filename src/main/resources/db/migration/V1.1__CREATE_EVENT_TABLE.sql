@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS "event";
 CREATE TABLE "event"(
-                       "id" BIGINT PRIMARY KEY,
-                       "image"  bytea,
+                       "id" SERIAL PRIMARY KEY,
+                       "title" VARCHAR,
                        "description" VARCHAR NOT NULL
 );

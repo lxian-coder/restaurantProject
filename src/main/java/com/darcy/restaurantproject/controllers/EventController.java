@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 /**
  * Darcy Xian  23/5/21  1:04 pm      restaurantProject
  */
+@CrossOrigin
 @RestController
 @RequestMapping("/event")
 @RequiredArgsConstructor
@@ -24,8 +25,12 @@ public class EventController {
 //    private final EventMapper eventMapper;
 
     @PatchMapping("/{eventId}")
-    public ResponseEntity<EventGetDTO> updateMenuItem(@PathVariable Long eventId, @RequestBody EventPostDTO eventPostDTO) {
+    public ResponseEntity<EventGetDTO> updateEventItem(@PathVariable Long eventId, @RequestBody EventPostDTO eventPostDTO) {
         return ResponseEntity.ok(eventService.updateEvent(eventId, eventPostDTO));
+    }
+    @GetMapping("/{eventId}")
+    public ResponseEntity<EventGetDTO> getEventItem(@PathVariable Long eventId){
+        return ResponseEntity.ok(eventService.findByID(eventId));
     }
 //    @PostMapping
 //    public ResponseEntity<Event> updateMenuItem(@RequestBody EventPostDTO eventPostDTO) {

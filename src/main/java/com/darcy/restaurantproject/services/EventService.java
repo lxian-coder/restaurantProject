@@ -22,6 +22,7 @@ public class EventService {
      return eventRepository.findById(id).map(event->{
          // image 已经在另一页修改完毕，在这里只是看一下description 要不要改；
          event.setDescription(eventPostDTO.getDescription());
+         event.setTitle(eventPostDTO.getTitle());
          eventRepository.save(event);
          return eventMapper.fromEntity(event);
      }).orElseThrow(()->{

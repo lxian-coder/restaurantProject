@@ -12,6 +12,7 @@ import java.util.List;
 /**
  * Darcy Xian  9/5/21  6:21 pm      restaurantProject
  */
+@CrossOrigin
 @RestController
 @RequestMapping("/menu")
 @RequiredArgsConstructor

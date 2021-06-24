@@ -12,6 +12,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class EventGetDTO {
     private  Long id;
-    private Byte[] image;
+    private String title;
     private String description;
 }

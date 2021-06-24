@@ -11,14 +11,15 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter
-@Table(name = "events")
+@Table(name = "event")
 public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "picture")
-    private Byte[] image;
+
+    @Column(name = "title")
+    private String title;
 
     @Column(name = "description")
     private String description;
