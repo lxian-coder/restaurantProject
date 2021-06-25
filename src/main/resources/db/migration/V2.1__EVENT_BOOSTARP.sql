@@ -1,0 +1,2 @@
+insert into event (title,description)
+values ('Keep Watching','No New Events in the Near Future, but Watch this space For Full Details on Our Celebration of ‘The Great Eastern Wine Week’ happening in September. ')
