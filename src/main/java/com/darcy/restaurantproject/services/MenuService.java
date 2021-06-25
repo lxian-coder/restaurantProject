@@ -2,6 +2,7 @@ package com.darcy.restaurantproject.services;
 
 import com.darcy.restaurantproject.dtos.MenuGetDTO;
 import com.darcy.restaurantproject.dtos.MenuPostDTO;
+import com.darcy.restaurantproject.entities.Menu;
 import com.darcy.restaurantproject.exceptions.ResourceNotFoundException;
 import com.darcy.restaurantproject.mappers.MenuMapper;
 import com.darcy.restaurantproject.repositories.MenuRepository;
@@ -50,8 +51,8 @@ public class MenuService {
             if (menuPostDTO.getPrice2() != null) {
                 menu.setPrice2(menuPostDTO.getPrice2());
             }
-            menuRepository.save(menu);
-            return menuMapper.fromEntity(menu);
+            Menu menuReturn = menuRepository.save(menu);
+            return menuMapper.fromEntity(menuReturn);
         }).orElseThrow(ResourceNotFoundException::new);
     }
 

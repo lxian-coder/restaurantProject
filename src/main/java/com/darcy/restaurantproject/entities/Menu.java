@@ -25,7 +25,6 @@ public class Menu {
     private String price2;
     @Column(name = "category", nullable = false)
     private String category;
-    @Column(name = "special", nullable = false)
-    private boolean special;
+
 
 }

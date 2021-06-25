@@ -21,10 +21,14 @@ public class EventService {
     public EventGetDTO updateEvent(Long id, EventPostDTO eventPostDTO){
      return eventRepository.findById(id).map(event->{
          // image 已经在另一页修改完毕，在这里只是看一下description 要不要改；
-         event.setDescription(eventPostDTO.getDescription());
-         event.setTitle(eventPostDTO.getTitle());
-         eventRepository.save(event);
-         return eventMapper.fromEntity(event);
+         if(eventPostDTO.getDescription() !=null){
+             event.setDescription(eventPostDTO.getDescription());
+         }
+         if(eventPostDTO.getTitle() != null){
+             event.setTitle(eventPostDTO.getTitle());
+         }
+         Event eventReturn = eventRepository.save(event);
+         return eventMapper.fromEntity(eventReturn);
      }).orElseThrow(()->{
          throw new ResourceNotFoundException("Event not found");});
     }

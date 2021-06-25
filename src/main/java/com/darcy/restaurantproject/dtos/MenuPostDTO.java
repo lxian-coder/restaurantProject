@@ -20,6 +20,5 @@ public class MenuPostDTO {
 
     private String category;
 
-    private boolean special;
 
 }
