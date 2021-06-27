@@ -1,2 +1,2 @@
 insert into event (title,description)
-values ('Keep Watching','No New Events in the Near Future, but Watch this space For Full Details on Our Celebration of ‘The Great Eastern Wine Week’ happening in September. ')
+values ('See You in September!','We are closed in July and August. We look forward to see you in September.');

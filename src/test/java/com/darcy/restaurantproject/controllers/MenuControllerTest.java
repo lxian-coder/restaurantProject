@@ -67,9 +67,7 @@ public class MenuControllerTest {
                  .andExpect(jsonPath("$.price2").exists())
                  .andExpect(jsonPath("$.price2").value("22"))
                .andExpect(jsonPath("$.category").exists())
-               .andExpect(jsonPath("$.category").value("lunch"))
-               .andExpect(jsonPath("$.special").exists())
-               .andExpect(jsonPath("$.special").value("true"));
+               .andExpect(jsonPath("$.category").value("lunch"));
     }
 
     @Test
@@ -89,9 +87,8 @@ public class MenuControllerTest {
                 .andExpect(jsonPath("$.[0].price2").exists())
                 .andExpect(jsonPath("$.[0].price2").value("22"))
                 .andExpect(jsonPath("$.[0].category").exists())
-                .andExpect(jsonPath("$.[0].category").value("lunch"))
-                .andExpect(jsonPath("$.[0].special").exists())
-                .andExpect(jsonPath("$.[0].special").value("true"));
+                .andExpect(jsonPath("$.[0].category").value("lunch"));
+
     }
 
     @Test
@@ -112,9 +109,8 @@ public class MenuControllerTest {
                 .andExpect(jsonPath("$.price2").exists())
                 .andExpect(jsonPath("$.price2").value("22"))
                 .andExpect(jsonPath("$.category").exists())
-                .andExpect(jsonPath("$.category").value("lunch"))
-                .andExpect(jsonPath("$.special").exists())
-                .andExpect(jsonPath("$.special").value("true"));;
+                .andExpect(jsonPath("$.category").value("lunch"));
+
     }
     @Test
     public void testDeleteMenuItemByID() throws Exception{

@@ -20,7 +20,7 @@ public class EventService {
 
     public EventGetDTO updateEvent(Long id, EventPostDTO eventPostDTO){
      return eventRepository.findById(id).map(event->{
-         // image 已经在另一页修改完毕，在这里只是看一下description 要不要改；
+
          if(eventPostDTO.getDescription() !=null){
              event.setDescription(eventPostDTO.getDescription());
          }
@@ -32,6 +32,7 @@ public class EventService {
      }).orElseThrow(()->{
          throw new ResourceNotFoundException("Event not found");});
     }
+
     public EventGetDTO findByID(Long id){
         Event event = eventRepository.findById(id).get();
         return  eventMapper.fromEntity(event);

@@ -34,21 +34,26 @@ public class EventServiceTest {
     private EventService eventService;
     @BeforeEach
     public void setup (){
-        event.setDescription("aa");
+        event.setDescription("des");
+        event.setTitle("title");
 
-        eventPostDTO.setDescription("bb");
+        eventPostDTO.setDescription("postDes");
+        eventPostDTO.setTitle("postTitle");
     }
     @Test
     public void shouldUpdateEventSuccessfullyGivenNewEvent(){
 
          EventGetDTO eventGetDTO = new EventGetDTO();
-         eventGetDTO.setDescription("bb");
+         eventGetDTO.setDescription("postDes");
+         eventGetDTO.setTitle("postTitle");
          when(eventRepository.findById(anyLong())).thenReturn(Optional.of(event));
-         when(eventMapper.fromEntity(any(Event.class))).thenReturn(eventGetDTO);
+         when(eventRepository.save(any(Event.class))).thenReturn(event);
+          when(eventMapper.fromEntity(any(Event.class))).thenReturn(eventGetDTO);
 
          EventGetDTO returnedEventGetDTO = eventService.updateEvent(anyLong(),eventPostDTO);
          verify(eventRepository,times(1)).findById(anyLong());
-         verify(eventRepository,times(1)).save(any(Event.class));
+         verify(eventMapper,times(1)).fromEntity(any(Event.class));
+        verify(eventRepository,times(1)).save(any(Event.class));
     }
     @Test
     public void shouldThrowExceptionGivenNoEventFindByID(){
@@ -64,5 +69,4 @@ public class EventServiceTest {
         verify(eventRepository,times(1)).findById(anyLong());
         verify(eventMapper,times(1)).fromEntity(any(Event.class));
     }
-
 }
