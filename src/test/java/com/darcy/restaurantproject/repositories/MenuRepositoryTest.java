@@ -34,14 +34,14 @@ public class MenuRepositoryTest {
         menu.setCategory("lunch");
         menu.setPrice("22");
         menu.setDescription("good tastes");
-        menu.setSpecial(true);
+
         Menu returnedMenu = menuRepository.save(menu);
 
         assertEquals("22",menu.getPrice());
         assertEquals("12",menu.getPrice2());
         assertEquals("lunch",menu.getCategory());
         assertEquals("good tastes",menu.getDescription());
-        assertTrue(menu.isSpecial());
+
         assertNotNull(menu.getId());
     }
     @Test
@@ -51,7 +51,7 @@ public class MenuRepositoryTest {
         menu.setCategory("lunch");
         menu.setPrice("22");
         menu.setDescription("good tastes");
-        menu.setSpecial(true);
+
         Menu returnedMenu = menuRepository.save(menu);
         menuRepository.deleteById(returnedMenu.getId());
         Optional<Menu> returnEdMenu2 = menuRepository.findById(returnedMenu.getId());
@@ -64,14 +64,14 @@ public class MenuRepositoryTest {
         menu.setCategory("lunch");
         menu.setPrice("22");
         menu.setDescription("good tastes");
-        menu.setSpecial(true);
+
         menuRepository.save(menu);
         Menu menu2 = new Menu();
         menu2.setPrice2("122");
         menu2.setCategory("lunch");
         menu2.setPrice("22");
         menu2.setDescription("good tastes");
-        menu2.setSpecial(true);
+
         menuRepository.save(menu2);
 
         List<Menu> menuList = menuRepository.findAll();

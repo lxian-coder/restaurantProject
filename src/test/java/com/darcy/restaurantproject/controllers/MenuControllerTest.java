@@ -45,7 +45,6 @@ public class MenuControllerTest {
     @BeforeEach
     public void setup(){
         menuGetDTO.setId(1L);
-        menuGetDTO.setSpecial(true);
         menuGetDTO.setDescription("good");
         menuGetDTO.setPrice("12");
         menuGetDTO.setPrice2("22");

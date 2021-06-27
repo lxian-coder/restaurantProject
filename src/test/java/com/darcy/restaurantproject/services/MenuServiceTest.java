@@ -41,14 +41,13 @@ public class MenuServiceTest {
     public void setup(){
      MenuGetDTO menuGTO = new MenuGetDTO();
      menuGTO.setId(1L);
-     menuGTO.setSpecial(true);
+
      menuGTO.setDescription("good");
      menuGTO.setPrice("12");
      menuGTO.setPrice2("22");
      menuGTO.setCategory("lunch");
      MenuGetDTO menuGetDTO1 = new MenuGetDTO();
      menuGetDTO1.setCategory("dinner");
-     menuGetDTO1.setSpecial(true);
      menuGetDTO1.setPrice2("11");
      menuGetDTO1.setPrice("19");
      menuGetDTO1.setId(2L);
@@ -92,7 +91,7 @@ public class MenuServiceTest {
     public void shouldUpdateMenuSuccessfullyGivenProperMenuPostAndID(){
         MenuGetDTO getDTOTest = new MenuGetDTO();
         getDTOTest.setCategory("dinner");
-        getDTOTest.setSpecial(true);
+
         getDTOTest.setPrice2("11");
         getDTOTest.setPrice("19");
         getDTOTest.setId(2L);
@@ -103,7 +102,7 @@ public class MenuServiceTest {
         menu.setCategory("a");
         menu.setPrice("11");
         menu.setPrice2("12");
-        menu.setSpecial(true);
+
 
      when(menuRepository.findById(anyLong())).thenReturn(java.util.Optional.of(menu));
       when(menuRepository.save(any(Menu.class))).thenReturn(menu);
