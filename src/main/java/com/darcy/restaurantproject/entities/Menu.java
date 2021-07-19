@@ -25,6 +25,7 @@ public class Menu {
     private String price2;
     @Column(name = "category", nullable = false)
     private String category;
-
+   @Column(name = "index",nullable = false)
+    private Long index;
 
 }

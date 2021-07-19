@@ -30,6 +30,7 @@ public class MenuService {
     }
 
     public MenuGetDTO addNewMenuItem(MenuPostDTO menuPostDTO) {
+        System.out.println("new record index!!"+menuPostDTO.getIndex());
         return menuMapper.fromEntity(menuRepository.save(menuMapper.toEntity(menuPostDTO)));
     }
 

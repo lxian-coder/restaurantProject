@@ -22,7 +22,7 @@ public class MenuGetDTO {
 
     private String category;
 
-
+    private Long index;
 
 
 }

@@ -20,5 +20,6 @@ public class MenuPostDTO {
 
     private String category;
 
+    private Long index;
 
 }
