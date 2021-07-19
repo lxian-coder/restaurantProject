@@ -104,10 +104,10 @@ public class MenuServiceTest {
         menu.setPrice2("12");
 
 
-     when(menuRepository.findById(anyLong())).thenReturn(java.util.Optional.of(menu));
+      when(menuRepository.findById(anyLong())).thenReturn(java.util.Optional.of(menu));
       when(menuRepository.save(any(Menu.class))).thenReturn(menu);
       when(menuMapper.fromEntity(any(Menu.class))).thenReturn(getDTOTest);
-    MenuGetDTO returnedMenuGetDTO = menuService.updateMenu( anyLong(), menuPostDTO);
+      MenuGetDTO returnedMenuGetDTO = menuService.updateMenu( anyLong(), menuPostDTO);
 
     verify(menuRepository,times(1)).findById(anyLong());
     verify(menuRepository,times(1)).save(any(Menu.class));
