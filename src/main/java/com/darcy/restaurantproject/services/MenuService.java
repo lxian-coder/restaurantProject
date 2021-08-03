@@ -52,9 +52,13 @@ public class MenuService {
             if (menuPostDTO.getPrice2() != null) {
                 menu.setPrice2(menuPostDTO.getPrice2());
             }
+            if(menuPostDTO.getIndex() != null){
+                menu.setIndex(menuPostDTO.getIndex());
+            }
             Menu menuReturn = menuRepository.save(menu);
             return menuMapper.fromEntity(menuReturn);
         }).orElseThrow(ResourceNotFoundException::new);
     }
 
 }
+
