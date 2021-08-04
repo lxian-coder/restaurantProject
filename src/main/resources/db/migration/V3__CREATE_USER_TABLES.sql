@@ -8,12 +8,10 @@ CREATE TABLE users (
     password_hint varchar (100)
 );
 
-
 CREATE TABLE authorities (
     id SERIAL primary key,
     permission varchar (30)
 );
-
 
 CREATE TABLE users_authorities(
     user_id int references users(id),
