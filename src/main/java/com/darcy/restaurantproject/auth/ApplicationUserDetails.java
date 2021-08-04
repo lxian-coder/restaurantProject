@@ -3,6 +3,7 @@ package com.darcy.restaurantproject.auth;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Component;
 
 import java.util.Collection;
 import java.util.Set;
@@ -10,6 +11,7 @@ import java.util.Set;
 /**
  * Darcy Xian  4/8/21  11:00 pm      restaurantProject
  */
+@Component
 @RequiredArgsConstructor
 public class ApplicationUserDetails implements UserDetails {
 

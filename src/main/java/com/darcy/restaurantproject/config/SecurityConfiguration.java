@@ -22,26 +22,30 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     private final ApplicationUserService applicationUserService;
 
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-      // set your configuration on the auth object
-//     auth.inMemoryAuthentication()
-//             .withUser("foo")
-//             .password("foo")
-//             .roles("USER")
-//             .and()
-//             .withUser("blah")
-//             .password("blah")
-//             .roles("ADMIN");
 
-        auth.userDetailsService(applicationUserService);
-
-    }
 
     @Bean
     public PasswordEncoder getPasswordEncoder(){
         return NoOpPasswordEncoder.getInstance();
     }
+
+
+    //    @Override
+//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+//      // set your configuration on the auth object
+////     auth.inMemoryAuthentication()
+////             .withUser("foo")
+////             .password("foo")
+////             .roles("USER")
+////             .and()
+////             .withUser("blah")
+////             .password("blah")
+////             .roles("ADMIN");
+//
+//        auth.userDetailsService(applicationUserService);
+//
+//    }
+
 
 //    @Override
 //    protected void configure(HttpSecurity http) throws Exception {
