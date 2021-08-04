@@ -11,7 +11,7 @@ import java.util.Set;
 /**
  * Darcy Xian  4/8/21  11:00 pm      restaurantProject
  */
-@Component
+
 @RequiredArgsConstructor
 public class ApplicationUserDetails implements UserDetails {
 
@@ -24,7 +24,7 @@ public class ApplicationUserDetails implements UserDetails {
     private final boolean isEnabled;
 
     @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
+    public Set<? extends GrantedAuthority> getAuthorities() {
         return grantedAuthorities;
     }
 
