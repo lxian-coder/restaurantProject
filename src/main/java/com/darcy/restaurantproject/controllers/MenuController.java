@@ -5,6 +5,9 @@ import com.darcy.restaurantproject.dtos.MenuPostDTO;
 import com.darcy.restaurantproject.services.MenuService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,6 +19,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/menu")
 @RequiredArgsConstructor
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class MenuController {
     private final MenuService menuService;
 
@@ -28,6 +32,7 @@ public class MenuController {
     }
 
     @GetMapping
+    @PreAuthorize("hasAnyRole('ROLE_BOSS','ROLE_ADMIN')")
     public ResponseEntity<List<MenuGetDTO>> listAllMenuItem() {
         return ResponseEntity.ok(menuService.listAll());
     }

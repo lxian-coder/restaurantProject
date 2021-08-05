@@ -19,7 +19,7 @@ public class User {
     @Column(name="id",updatable = false,nullable = false)
     private Long id;
 
-    @Column(name = "userName",unique = true,nullable = false)
+    @Column(name = "username",unique = true,nullable = false)
     private String username;
 
     @Column(name="encoded_password",nullable = false)

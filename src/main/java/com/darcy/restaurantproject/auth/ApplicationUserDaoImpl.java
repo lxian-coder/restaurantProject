@@ -4,6 +4,7 @@ import com.darcy.restaurantproject.entities.Authority;
 import com.darcy.restaurantproject.entities.User;
 import com.darcy.restaurantproject.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Component;
 
@@ -16,14 +17,16 @@ import java.util.stream.Collectors;
  */
 @Component
 @RequiredArgsConstructor
+@Slf4j
 public class ApplicationUserDaoImpl implements ApplicationUserDao{
 
     private final UserRepository userRepository;
 
     @Override
     public Optional<ApplicationUserDetails> fetchUserByUsername(String username) {
+       log.info("UserDaoImpl started! UserName is "+username);
         User user = userRepository.findByUsername(username);
-
+        log.info("UserDaoImpl Success!");
         ApplicationUserDetails applicationUserDetails = new ApplicationUserDetails(
                 user.getUsername(),
                 user.getEncodedPassword(),
