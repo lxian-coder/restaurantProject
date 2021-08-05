@@ -63,7 +63,7 @@ public class JwtTokenFilter extends OncePerRequestFilter {
                 grantedAuthorities
         );
         SecurityContextHolder.getContext().setAuthentication(authentication);
-
+       log.info("JWT token accepted!");
 
         filterChain.doFilter(request,response);
 

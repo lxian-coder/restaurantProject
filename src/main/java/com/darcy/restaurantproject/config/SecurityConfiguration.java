@@ -50,6 +50,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .addFilterAfter(new JwtTokenFilter(secretKey), JwtUsernamePasswordAuthFilter.class)
                 .authorizeRequests()
                 .antMatchers("/","index","/css/*","/actuator/*").permitAll()
+
                 .anyRequest()
                 .authenticated();
     }

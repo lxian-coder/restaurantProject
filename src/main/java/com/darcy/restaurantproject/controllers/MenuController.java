@@ -32,12 +32,13 @@ public class MenuController {
     }
 
     @GetMapping
-    @PreAuthorize("hasAnyRole('ROLE_BOSS','ROLE_ADMIN')")
+    @PreAuthorize("hasAnyRole('BOSS','ADMIN','STAFF')")
     public ResponseEntity<List<MenuGetDTO>> listAllMenuItem() {
         return ResponseEntity.ok(menuService.listAll());
     }
 
     @PatchMapping("/{menuItemId}")
+
     public ResponseEntity<MenuGetDTO> updateMenuItem(@PathVariable Long menuItemId, @RequestBody MenuPostDTO menuPostDTO) {
         return ResponseEntity.ok(menuService.updateMenu(menuItemId, menuPostDTO));
     }
