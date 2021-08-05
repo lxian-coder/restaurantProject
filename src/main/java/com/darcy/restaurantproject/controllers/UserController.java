@@ -1,5 +1,6 @@
 package com.darcy.restaurantproject.controllers;
 
+import com.darcy.restaurantproject.entities.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -20,6 +21,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 
 //    @GetMapping
-//    public ResponseEntity<>
+//    public ResponseEntity<User> listAllUsers
 
 }

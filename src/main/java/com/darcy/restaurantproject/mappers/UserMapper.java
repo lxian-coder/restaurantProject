@@ -1,10 +1,8 @@
 package com.darcy.restaurantproject.mappers;
 
-import com.darcy.restaurantproject.dtos.MenuGetDTO;
-import com.darcy.restaurantproject.dtos.MenuPostDTO;
+
 import com.darcy.restaurantproject.dtos.UserGetDTO;
 import com.darcy.restaurantproject.dtos.UserPostDTO;
-import com.darcy.restaurantproject.entities.Menu;
 import com.darcy.restaurantproject.entities.User;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
