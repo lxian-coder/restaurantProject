@@ -21,9 +21,6 @@ public class Authority {
     @Column(name = "permission", unique = true,nullable = false)
     private String permission;
 
-    @ManyToMany
-    @JoinTable(name="users_authorities",
-               joinColumns = @JoinColumn(name="authority_id"),
-               inverseJoinColumns = @JoinColumn(name="user_id"))
+    @ManyToMany(mappedBy = "authorities")
     private Set<User> users;
 }

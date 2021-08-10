@@ -2,10 +2,12 @@ package com.darcy.restaurantproject.services;
 
 import com.darcy.restaurantproject.dtos.UserGetDTO;
 import com.darcy.restaurantproject.dtos.UserPostDTO;
+import com.darcy.restaurantproject.entities.Authority;
 import com.darcy.restaurantproject.entities.User;
 import com.darcy.restaurantproject.mappers.UserMapper;
 import com.darcy.restaurantproject.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +19,7 @@ import java.util.stream.Collectors;
  */
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class UserService {
 
     private final UserRepository userRepository;
@@ -32,11 +35,20 @@ public class UserService {
         userRepository.deleteById(id);
         return;
     }
+   public UserGetDTO findUserById(Long id){
+        return userMapper.fromEntity(userRepository.findById(id).get());
+   }
+
 
     public UserGetDTO addNewUser(UserPostDTO userPostDTO){
 
         User user =   userMapper.toEntity(userPostDTO);
-        user.setEncodedPassword(encodePassword(user.getEncodedPassword()));
+        String rawPassword = user.getEncodedPassword();
+        log.info("RawPassword:"+rawPassword);
+        log.info("RawName: "+ user.getUsername());
+        log.info("Authrorities:"+user.getAuthorities().iterator().next().getPermission());
+
+        user.setEncodedPassword(encodePassword(rawPassword));
         User userReturn = userRepository.save(user);
         return userMapper.fromEntity(userReturn);
     }

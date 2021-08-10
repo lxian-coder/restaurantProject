@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
  * Darcy Xian  4/8/21  11:51 am      restaurantProject
  */
 @Repository
+
 public interface UserRepository  extends JpaRepository<User, Long> {
 
    @Query("select u from User u join fetch u.authorities a where u.username=:username")

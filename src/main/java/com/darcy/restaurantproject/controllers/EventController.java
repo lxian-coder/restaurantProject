@@ -10,6 +10,7 @@ import com.darcy.restaurantproject.repositories.EventRepository;
 import com.darcy.restaurantproject.services.EventService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.web.bind.annotation.*;
 
 /**

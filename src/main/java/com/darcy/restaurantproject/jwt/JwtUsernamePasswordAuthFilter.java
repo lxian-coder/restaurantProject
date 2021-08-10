@@ -53,7 +53,7 @@ public class JwtUsernamePasswordAuthFilter extends UsernamePasswordAuthenticatio
                 .setSubject(authResult.getName())
                 .claim("authorities",authResult.getAuthorities())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10))
+                .setExpiration(new Date(System.currentTimeMillis() + 10000 * 60 * 60 * 10))
                 .signWith(secretKey)
                 .compact();
 

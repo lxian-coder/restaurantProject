@@ -28,7 +28,7 @@ public class User {
     @Column(name="password_hint")
     private String passwordHint;
 
-    @ManyToMany
+    @ManyToMany( fetch = FetchType.LAZY)
     @JoinTable(name="users_authorities",
     joinColumns = @JoinColumn(name="user_id"),
     inverseJoinColumns = @JoinColumn(name="authority_id"))
