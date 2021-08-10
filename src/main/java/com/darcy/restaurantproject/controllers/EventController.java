@@ -10,6 +10,7 @@ import com.darcy.restaurantproject.repositories.EventRepository;
 import com.darcy.restaurantproject.services.EventService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,12 +21,14 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/event")
 @RequiredArgsConstructor
+
 public class EventController {
     private final EventService eventService;
 //    private final EventRepository eventRepository;
 //    private final EventMapper eventMapper;
 
     @PatchMapping("/{eventId}")
+    @PreAuthorize("hasAnyRole('BOSS','ADMIN','STAFF')")
     public ResponseEntity<EventGetDTO> updateEventItem(@PathVariable Long eventId, @RequestBody EventPostDTO eventPostDTO) {
         return ResponseEntity.ok(eventService.updateEvent(eventId, eventPostDTO));
     }

@@ -7,6 +7,7 @@ import com.darcy.restaurantproject.services.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -25,24 +26,29 @@ public class UserController {
     private final UserService userService;
 
     @GetMapping
+    @PreAuthorize("hasAnyRole('BOSS','ADMIN')")
     public ResponseEntity<List<UserGetDTO>> listAllUsers(){
         return ResponseEntity.ok(userService.findAllUsers());
     }
 
     @GetMapping("/{userId}")
+    @PreAuthorize("hasAnyRole('BOSS','ADMIN')")
     public ResponseEntity<UserGetDTO> findUserById(@PathVariable Long userId){
         return ResponseEntity.ok(userService.findUserById((userId)));
     }
     @PostMapping
+    @PreAuthorize("hasAnyRole('BOSS','ADMIN')")
     public ResponseEntity<UserGetDTO> addNewUser(@RequestBody UserPostDTO newUser){
         log.info(newUser.getEncodedPassword());
         return ResponseEntity.ok(userService.addNewUser(newUser));
     }
     @PatchMapping("/{userId}")
+    @PreAuthorize("hasAnyRole('BOSS','ADMIN')")
     public ResponseEntity<UserGetDTO> updateUser(@PathVariable Long userId,@RequestBody UserPostDTO userPostDTO){
         return ResponseEntity.ok(userService.updateUser(userId,userPostDTO));
     }
     @DeleteMapping("/{userId}")
+    @PreAuthorize("hasAnyRole('BOSS','ADMIN')")
     public void deleteUser(@PathVariable Long userId){
         userService.deleteUserById(userId);
         return;

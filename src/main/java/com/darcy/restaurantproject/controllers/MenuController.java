@@ -19,30 +19,31 @@ import java.util.List;
 @RestController
 @RequestMapping("/menu")
 @RequiredArgsConstructor
-@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class MenuController {
     private final MenuService menuService;
 
     @PostMapping
     // @RequestBody tell Sping MVC to look at the body of the request and parse it and try to create a
     // MenuPostDTO out of that
+    @PreAuthorize("hasAnyRole('BOSS','ADMIN','STAFF')")
     public ResponseEntity<MenuGetDTO> createNewMenuItem(@RequestBody MenuPostDTO menuPostDTO) {
         MenuGetDTO menuGetDTO = menuService.addNewMenuItem(menuPostDTO);
         return ResponseEntity.ok(menuGetDTO);
     }
 
     @GetMapping
-    @PreAuthorize("hasAnyRole('BOSS','ADMIN','STAFF')")
     public ResponseEntity<List<MenuGetDTO>> listAllMenuItem() {
         return ResponseEntity.ok(menuService.listAll());
     }
 
     @PatchMapping("/{menuItemId}")
+    @PreAuthorize("hasAnyRole('BOSS','ADMIN','STAFF')")
     public ResponseEntity<MenuGetDTO> updateMenuItem(@PathVariable Long menuItemId, @RequestBody MenuPostDTO menuPostDTO) {
         return ResponseEntity.ok(menuService.updateMenu(menuItemId, menuPostDTO));
     }
 
     @DeleteMapping("/{menuItemId}")
+    @PreAuthorize("hasAnyRole('BOSS','ADMIN','STAFF')")
     public void deleteMenuItem(@PathVariable Long menuItemId) {
         menuService.deleteMenu(menuItemId);
     }
