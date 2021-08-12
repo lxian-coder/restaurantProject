@@ -20,12 +20,17 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.filter.CorsFilter;
 
 import javax.crypto.SecretKey;
 
 /**
  * Darcy Xian  23/7/21  12:15 pm      restaurantProject
  */
+
 @Configuration
 @RequiredArgsConstructor
 @EnableWebSecurity
@@ -45,6 +50,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
+                .cors()
+                .and()
                 .csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
@@ -54,6 +61,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/","index","/css/*","/actuator/*","/menu","/event/1").permitAll()
                 .anyRequest()
                 .authenticated();
+
+
     }
 
     @Bean
@@ -70,6 +79,26 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     public PasswordEncoder getPasswordEncoder(){
 
         return new BCryptPasswordEncoder(10);
+    }
+
+
+    // 解决了 JWT 和 react 配合登录的时候的 CORS问题
+    @Bean
+    public CorsFilter corsFilter() {
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        CorsConfiguration config = new CorsConfiguration();
+        config.addAllowedOrigin("*");
+        config.addAllowedHeader("*");
+        config.addExposedHeader("*");
+        config.addAllowedMethod("OPTIONS");
+        config.addAllowedMethod("GET");
+        config.addAllowedMethod("POST");
+        config.addAllowedMethod("PUT");
+        config.addAllowedMethod("DELETE");
+        config.addAllowedMethod("PATCH");
+
+        source.registerCorsConfiguration("/**", config);
+        return new CorsFilter(source);
     }
 
 
