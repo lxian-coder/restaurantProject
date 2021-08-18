@@ -74,4 +74,11 @@ public class UserService {
         return new BCryptPasswordEncoder(10).encode(rawPassword);
    }
 
+   public UserGetDTO findUserByName(String name){
+        userRepository.findByUsername(name).getAuthorities().stream().forEach(ele->log.info(ele.getPermission()));
+       UserGetDTO userGetDTO =  userMapper.fromEntity(userRepository.findByUsername(name));
+        log.info( String.valueOf(userGetDTO.getAuthorities().size()));
+       return userGetDTO;
+   }
+
 }

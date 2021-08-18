@@ -1,5 +1,6 @@
 package com.darcy.restaurantproject.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,5 +23,6 @@ public class Authority {
     private String permission;
 
     @ManyToMany(mappedBy = "authorities")
+    @JsonIgnoreProperties(value = "authorities")
     private Set<User> users;
 }

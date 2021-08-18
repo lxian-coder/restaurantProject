@@ -1,5 +1,6 @@
 package com.darcy.restaurantproject.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -29,6 +30,7 @@ public class User {
     private String passwordHint;
 
     @ManyToMany( fetch = FetchType.LAZY)
+    @JsonIgnoreProperties(value = "users")
     @JoinTable(name="users_authorities",
     joinColumns = @JoinColumn(name="user_id"),
     inverseJoinColumns = @JoinColumn(name="authority_id"))

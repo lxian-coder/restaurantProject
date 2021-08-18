@@ -3,6 +3,7 @@ package com.darcy.restaurantproject.controllers;
 import com.darcy.restaurantproject.dtos.UserGetDTO;
 import com.darcy.restaurantproject.dtos.UserPostDTO;
 import com.darcy.restaurantproject.entities.User;
+
 import com.darcy.restaurantproject.services.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -31,7 +32,7 @@ public class UserController {
         return ResponseEntity.ok(userService.findAllUsers());
     }
 
-    @GetMapping("/{userId}")
+    @GetMapping("/id/{userId}")
     @PreAuthorize("hasAnyRole('BOSS','ADMIN')")
     public ResponseEntity<UserGetDTO> findUserById(@PathVariable Long userId){
         return ResponseEntity.ok(userService.findUserById((userId)));
@@ -52,6 +53,12 @@ public class UserController {
     public void deleteUser(@PathVariable Long userId){
         userService.deleteUserById(userId);
         return;
+    }
+
+    @GetMapping("/{username}")
+    public ResponseEntity<UserGetDTO> findByUserName(@PathVariable String username){
+        log.info("Username is :"+username);
+        return ResponseEntity.ok(userService.findUserByName(username));
     }
 
 }
