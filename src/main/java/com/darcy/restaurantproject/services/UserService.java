@@ -47,13 +47,23 @@ public class UserService {
 
     public UserGetDTO addNewUser(UserPostDTO userPostDTO){
 
-        User user =   userMapper.toEntity(userPostDTO);
-        String rawPassword = user.getEncodedPassword();
+        User user = userMapper.toEntity(userPostDTO);
+        String rawPassword = userPostDTO.getEncodedPassword();
         log.info("RawPassword:"+rawPassword);
-        log.info("RawName: "+ user.getUsername());
-        log.info("Authrorities:"+user.getAuthorities().iterator().next().getPermission());
+        log.info("RawName: "+ userPostDTO.getUsername());
+        log.info("Authrorities:"+userPostDTO.getAuthorities().iterator().next().getPermission());
+        Authority authority = userPostDTO.getAuthorities().iterator().next();
+        String permission = authority.getPermission();
+        Authority authorityReturn = authorityRepository.findByPermission(permission).get();
+        authority.setId(authorityReturn.getId());
+        user.getAuthorities().clear();
+        user.getAuthorities().add(authority);
+
 
         user.setEncodedPassword(encodePassword(rawPassword));
+        log.info("password:"+user.getEncodedPassword());
+        log.info("id :"+user.getId());
+        log.info("check Auth id:"+user.getAuthorities().iterator().next().getId());
         User userReturn = userRepository.save(user);
         return userMapper.fromEntity(userReturn);
     }

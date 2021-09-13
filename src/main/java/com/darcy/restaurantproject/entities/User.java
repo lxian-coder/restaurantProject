@@ -30,7 +30,7 @@ public class User {
     @Column(name="password_hint")
     private String passwordHint;
 
-    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY )
+    @ManyToMany(cascade = CascadeType.MERGE,fetch = FetchType.LAZY )
     @JsonIgnoreProperties(value = "users")
     @JoinTable(name="users_authorities",
     joinColumns = @JoinColumn(name="user_id"),
