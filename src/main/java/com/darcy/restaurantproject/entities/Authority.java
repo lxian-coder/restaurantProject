@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -22,7 +23,7 @@ public class Authority {
     @Column(name = "permission", unique = true,nullable = false)
     private String permission;
 
-    @ManyToMany(mappedBy = "authorities")
+    @ManyToMany(mappedBy = "authorities" )
     @JsonIgnoreProperties(value = "authorities")
     private Set<User> users;
 }

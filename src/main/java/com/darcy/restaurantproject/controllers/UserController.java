@@ -46,6 +46,7 @@ public class UserController {
     @PatchMapping("/{userId}")
     @PreAuthorize("hasAnyRole('BOSS','ADMIN')")
     public ResponseEntity<UserGetDTO> updateUser(@PathVariable Long userId,@RequestBody UserPostDTO userPostDTO){
+         log.info(userPostDTO.getAuthorities().toString());
         return ResponseEntity.ok(userService.updateUser(userId,userPostDTO));
     }
     @DeleteMapping("/{userId}")

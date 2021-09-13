@@ -44,6 +44,7 @@ public class JwtTokenFilter extends OncePerRequestFilter {
         }
 
         String token = authorizationHeader.replace("Bearer ","");
+        // 这一步，自动进行了验证。
         Jws<Claims> claimsJws = Jwts.parserBuilder()
                 .setSigningKey(secretKey)
                 .build()

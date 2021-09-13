@@ -5,12 +5,15 @@ import com.darcy.restaurantproject.dtos.UserPostDTO;
 import com.darcy.restaurantproject.entities.Authority;
 import com.darcy.restaurantproject.entities.User;
 import com.darcy.restaurantproject.mappers.UserMapper;
+import com.darcy.restaurantproject.repositories.AuthorityRepository;
 import com.darcy.restaurantproject.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -24,6 +27,8 @@ public class UserService {
 
     private final UserRepository userRepository;
     private final UserMapper userMapper;
+    private final AuthorityRepository authorityRepository;
+
 
     public List<UserGetDTO> findAllUsers (){
         return userRepository.findAll().stream()
@@ -55,16 +60,25 @@ public class UserService {
 
     public UserGetDTO updateUser(Long id,UserPostDTO userPostDTO){
         User user = userRepository.findById(id).get();
-        if(userPostDTO.getUsername() != null){
+        if(userPostDTO.getUsername() != null && userPostDTO.getUsername() != user.getUsername()){
             user.setUsername(userPostDTO.getUsername());
         }
         if(userPostDTO.getEncodedPassword() != null){
+
             user.setEncodedPassword(encodePassword(userPostDTO.getEncodedPassword()));
         }
-        if(userPostDTO.getAuthorities() != null){
-            user.setAuthorities(userPostDTO.getAuthorities());
+        if(userPostDTO.getAuthorities() != null ){
+            Authority authority = userPostDTO.getAuthorities().iterator().next();
+            String permission = authority.getPermission();
+            Authority authorityReturn = authorityRepository.findByPermission(permission).get();
+            authority.setId(authorityReturn.getId());
+            user.getAuthorities().clear();
+            user.getAuthorities().add(authority);
         }
+        if(userPostDTO.getPasswordHint() != null){
+            user.setPasswordHint(userPostDTO.getPasswordHint());
 
+        }
         User userReturn = userRepository.save(user);
         return userMapper.fromEntity(userReturn);
 

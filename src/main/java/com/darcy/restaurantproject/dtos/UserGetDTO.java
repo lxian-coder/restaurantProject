@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.stereotype.Component;
 
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -17,5 +18,5 @@ public class UserGetDTO {
     private Long id;
     private String username;
     private String passwordHint;
-    private Set<Authority> authorities;
+    private Set<Authority> authorities = new HashSet<>();
 }
