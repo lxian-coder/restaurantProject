@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 @RequiredArgsConstructor
-public class EventService {
+public class  EventService {
     private final EventRepository eventRepository;
     private final EventMapper eventMapper;
 

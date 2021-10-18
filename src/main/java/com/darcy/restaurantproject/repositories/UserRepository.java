@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 /**
  * Darcy Xian  4/8/21  11:51 am      restaurantProject
  */
-@Repository
+@Repository`4
 
 public interface UserRepository  extends JpaRepository<User, Long> {
 
